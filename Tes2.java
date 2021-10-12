@@ -106,49 +106,42 @@ public class Tes2 {
                 case 3 :
                                       
                     String studentid,studentpin;
-                    boolean trial = true;
-                    int idindex = 0;
-                    
-                    if (studentList.isEmpty())
-                    {
-                        System.out.println("Please register an account before you log in");
-                        break;
-                    }
-                    
-                    System.out.println("Enter ID");
-                    studentid = keyboard.nextLine();
+                    boolean testid = true;
+                    int idIndex=0;
 
-                    do
-                    {       
-                        for (int l = 0; l < studentList.size(); l++) 
-                        {                                  
-                            if (studentid.equals(studentList.get(l).getID()))
-                            {
-                                trial = false;
-                                idindex = l;
-                                break;
-                            }                            
-                        }
-                        if (trial == false)
-                            {
+                    System.out.println("\n" + "Enter ID");
+                    studentid = keyboard.nextLine();               
+
+                    while(testid == true)
+                    {
+                        for (int j = 0; j<studentList.size();j++)
+                        {
+                            if (studentid.equals(studentList.get(j).getID()))
+                            {                        
+                                idIndex = j;
+                                testid = false;
                                 break;
                             }
-                        System.out.println("ID is not registered");
-                        System.out.println("Please register your ID");
+                        }
+                        if (testid == false)
+                        {
+                            break;
+                        }
+                        System.out.println("ID does not exist");
+                        System.out.println("Re enter ID");
                         studentid = keyboard.nextLine();
-                    }while(trial == true);
-                    
+                    }
+
                     System.out.println("Enter Pin");
                     studentpin = keyboard.nextLine();
-                    
-                    while(!studentpin.equals(studentList.get(idindex).getPin()))
+
+                    while(!studentpin.equals(studentList.get(idIndex).getPin()))
                     {
-                        System.out.println("Wrong pin");
-                        System.out.println("Re-enter pin");
+                        System.out.println("wrong pin");
+                        System.out.println("Re enter pin");
                         studentpin = keyboard.nextLine();
                     }
-                    System.out.println("Succesfully logged in");
-                    break;
+                    System.out.println("Valid Information");
                             
                 case 4:
                     System.out.println("Thank you");
